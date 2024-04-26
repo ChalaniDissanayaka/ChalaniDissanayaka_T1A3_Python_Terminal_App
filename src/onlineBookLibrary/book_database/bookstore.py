@@ -19,21 +19,21 @@ def save_all_books(books):
         json.dump(books, file)
 
 
-def add_book(name, author):
+def add_book(book_name, author):
     books = get_all_books()
-    books.append({'name': name, 'author': author, 'read': False})
+    books.append({'book_name': book_name, 'author': author, 'read': False})
     save_all_books(books)
 
 
-def mark_book_as_read(name):
+def mark_book_as_read(book_name):
     books = get_all_books()
     for book in books:
-        if book['name'] == name:
+        if book['book_name'] == book_name:
             book['read'] = '1'
     save_all_books(books)
 
 
-def delete_book(name):
+def delete_book(book_name):
     books = get_all_books()
-    books = [book for book in books if book['name'] != name]
+    books = [book for book in books if book['book_name'] != book_name]
     save_all_books(books)

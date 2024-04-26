@@ -14,7 +14,6 @@ Please Enter Your Choice: """
 
 
 def menu():
-    bookstore.create_book_table()
     user_input = input(USER_CHOICE)
     while user_input != 'q':
         if user_input == 'a':
@@ -30,28 +29,28 @@ def menu():
 
 
 def prompt_add_book():
-    name = input('Enter the new book name: ')
+    book_name = input('Enter the new book name: ')
     author = input('Enter the new book author: ')
 
-    bookstore.add_book(name, author)
+    bookstore.add_book(book_name, author)
 
 
 def list_books():
     for book in bookstore.get_all_books():
         read = 'YES' if book['read'] == '1' else 'NO'  # if book 'read' == false then Read: NO
-        print(f"{book['name']} by {book['author']} — Read: {read}")
+        print(f"{book['book_name']} by {book['author']} — Read: {read}")
 
 
 def prompt_read_book():
-    name = input('Enter the name of the book you just finished reading: ')
+    book_name = input('Enter the name of the book you just finished reading: ')
 
-    bookstore.mark_book_as_read(name)
+    bookstore.mark_book_as_read(book_name)
 
 
 def prompt_delete_book():
-    name = input('Enter the name of the book you wish to delete: ')
+    book_name = input('Enter the name of the book you wish to delete: ')
 
-    bookstore.delete_book(name)
+    bookstore.delete_book(book_name)
 
 
 menu()
