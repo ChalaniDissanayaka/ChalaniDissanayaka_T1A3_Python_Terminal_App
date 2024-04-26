@@ -1,1 +1,82 @@
-[{"book_name": "Jane Eyre", "author": "Charlotte Bronte", "read": "1"}, {"book_name": "Anna karenina", "author": "Leo Tolstoy", "read": false}]
+[
+  {
+    "book_name": "wind",
+    "author": "pat",
+    "users": [
+      {
+        "user_name": "lily",
+        "user_role": "admin",
+        "read": false
+      },
+      {
+        "user_name": "silvia",
+        "user_role": "reader",
+        "read": "1"
+      },
+      {
+        "user_name": "watson",
+        "user_role": "reader",
+        "read": "1"
+      }
+    ]
+  },
+  {
+    "book_name": "sky",
+    "author": "sami",
+    "users": [
+      {
+        "user_name": "dave",
+        "user_role": "admin",
+        "read": false
+      }
+    ]
+  },
+  {
+    "book_name": "fire",
+    "author": "kimo",
+    "users": [
+      {
+        "user_name": "jack",
+        "user_role": "admin",
+        "read": false
+      }
+    ]
+  },
+  {
+    "book_name": "little women",
+    "author": "john",
+    "users": [
+      {
+        "user_name": "mary",
+        "user_role": "admin",
+        "read": false
+      },
+      {
+        "user_name": "sha",
+        "user_role": "reader",
+        "read": "1"
+      },
+      {
+        "user_name": "mary",
+        "user_role": "reader",
+        "read": "1"
+      }
+    ]
+  },
+  {
+    "book_name": "water",
+    "author": "max",
+    "users": [
+      {
+        "user_name": "suba",
+        "user_role": "admin",
+        "read": false
+      },
+      {
+        "user_name": "anne",
+        "user_role": "reader",
+        "read": "1"
+      }
+    ]
+  }
+]

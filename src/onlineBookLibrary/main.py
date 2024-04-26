@@ -29,22 +29,24 @@ def menu():
 
 
 def prompt_add_book():
+    user_name = input('Enter your name: ')
     book_name = input('Enter the new book name: ')
     author = input('Enter the new book author: ')
 
-    bookstore.add_book(book_name, author)
+    bookstore.add_book(book_name, author, user_name)
 
 
 def list_books():
-    for book in bookstore.get_all_books():
-        read = 'YES' if book['read'] == '1' else 'NO'  # if book 'read' == false then Read: NO
-        print(f"{book['book_name']} by {book['author']} — Read: {read}")
+    book_list = bookstore.get_all_books()
+    for book in book_list:
+        print(f"{book['book_name']} by {book['author']}")
 
 
 def prompt_read_book():
+    user_name = input('Enter your name: ')
     book_name = input('Enter the name of the book you just finished reading: ')
 
-    bookstore.mark_book_as_read(book_name)
+    bookstore.mark_book_as_read(book_name, user_name)
 
 
 def prompt_delete_book():
