@@ -1,0 +1,22 @@
+[
+  {
+    "user_name": "lily",
+    "user_role": "admin"
+  },
+  {
+    "user_name": "dave",
+    "user_role": "admin"
+  },
+  {
+    "user_name": "jack",
+    "user_role": "admin"
+  },
+  {
+    "user_name": "mary",
+    "user_role": "admin"
+  },
+  {
+    "user_name": "suba",
+    "user_role": "admin"
+  }
+]

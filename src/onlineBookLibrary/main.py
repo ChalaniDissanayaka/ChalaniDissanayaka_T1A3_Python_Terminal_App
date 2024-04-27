@@ -1,5 +1,5 @@
 from book_database import bookstore
-
+from book_database import user
 
 USER_CHOICE = """
 Please Enter:
@@ -28,12 +28,19 @@ def menu():
         user_input = input(USER_CHOICE)
 
 
+def is_admin(user_name) -> bool:
+    return user.verify_admin_user(user_name)
+
+
 def prompt_add_book():
     user_name = input('Enter your name: ')
     book_name = input('Enter the new book name: ')
     author = input('Enter the new book author: ')
 
-    bookstore.add_book(book_name, author, user_name)
+    if is_admin(user_name):
+        bookstore.add_book(book_name, author, user_name)
+    else:
+        print('You must have admin privileges to add a book.')
 
 
 def list_books():
@@ -50,9 +57,13 @@ def prompt_read_book():
 
 
 def prompt_delete_book():
+    user_name = input('Enter your name: ')
     book_name = input('Enter the name of the book you wish to delete: ')
 
-    bookstore.delete_book(book_name)
+    if is_admin(user_name):
+        bookstore.delete_book(book_name)
+    else:
+        print('You must have admin privileges to delete a book.')
 
 
 menu()
