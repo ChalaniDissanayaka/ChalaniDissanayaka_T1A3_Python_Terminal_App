@@ -19,9 +19,10 @@ def save_all_books(books):
         json.dump(books, file)
 
 
-def add_book(book_name, author, user_name):
+def add_book(book_name, author, description, user_name):
     books = get_all_books()
-    books.append({'book_name': book_name, 'author': author,
+    books.append({'book_name': book_name, 'author': author, 'description': description,
+                  'average_rating': 0, 'total_rating_score': 0, 'number_of_read_times': 0,
                   'users': [{'user_name': user_name, 'user_role': 'admin', 'read': False}]})
     save_all_books(books)
 

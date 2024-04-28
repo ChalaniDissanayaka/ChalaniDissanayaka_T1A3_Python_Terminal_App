@@ -1,81 +1,61 @@
 [
   {
-    "book_name": "wind",
-    "author": "pat",
+    "book_name": "The Name of the Wind",
+    "author": "Patrick Rothfuss",
+    "description": "The intimate narrative of his childhood in a troupe of traveling players, his years spent as a near-feral orphan in a crime-ridden city",
+    "average_rating": 0,
+    "total_rating_score": 0,
+    "number_of_read_times": 0,
     "users": [
       {
         "user_name": "lily",
         "user_role": "admin",
         "read": false
-      },
-      {
-        "user_name": "silvia",
-        "user_role": "reader",
-        "read": "1"
-      },
-      {
-        "user_name": "watson",
-        "user_role": "reader",
-        "read": "1"
       }
     ]
   },
   {
-    "book_name": "sky",
-    "author": "sami",
-    "users": [
-      {
-        "user_name": "dave",
-        "user_role": "admin",
-        "read": false
-      }
-    ]
-  },
-  {
-    "book_name": "fire",
-    "author": "kimo",
-    "users": [
-      {
-        "user_name": "jack",
-        "user_role": "admin",
-        "read": false
-      }
-    ]
-  },
-  {
-    "book_name": "little women",
-    "author": "john",
+    "book_name": "The Wise Man\u2019s Fear",
+    "author": "Patrick Rothfuss",
+    "description": "There are three things all wise men fear: the sea in storm, a night with no moon, and the anger of a gentle man.",
+    "average_rating": 0,
+    "total_rating_score": 0,
+    "number_of_read_times": 0,
     "users": [
       {
         "user_name": "mary",
         "user_role": "admin",
         "read": false
-      },
-      {
-        "user_name": "sha",
-        "user_role": "reader",
-        "read": "1"
-      },
-      {
-        "user_name": "mary",
-        "user_role": "reader",
-        "read": "1"
       }
     ]
   },
   {
-    "book_name": "water",
-    "author": "max",
+    "book_name": "The Narrow Road Between Desires",
+    "author": "Patrick Rothfuss",
+    "description": "The Narrow Road Between Desires is Bast's story. In it he traces the old ways of making and breaking",
+    "average_rating": 0,
+    "total_rating_score": 0,
+    "number_of_read_times": 0,
     "users": [
       {
         "user_name": "suba",
         "user_role": "admin",
         "read": false
-      },
+      }
+    ]
+  },
+  {
+    "book_name": "The Girl with the Dragon Tattoo",
+    "author": "Stieg Larsson",
+    "description": "Harriet Vanger, a scion of one of Sweden\u2019s wealthiest families disappeared over forty years ago.",
+    "average_rating": 0,
+    "total_rating_score": 0,
+    "number_of_read_times": 0,
+    "users": [
       {
-        "user_name": "anne",
-        "user_role": "reader",
-        "read": "1"
+        "user_name": "dave",
+        "user_role": "admin",
+        "read": false
       }
     ]
   }

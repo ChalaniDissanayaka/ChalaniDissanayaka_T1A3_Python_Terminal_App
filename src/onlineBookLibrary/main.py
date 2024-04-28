@@ -36,9 +36,10 @@ def prompt_add_book():
     user_name = input('Enter your name: ')
     book_name = input('Enter the new book name: ')
     author = input('Enter the new book author: ')
+    description = input('Enter the new book description: ')
 
     if is_admin(user_name):
-        bookstore.add_book(book_name, author, user_name)
+        bookstore.add_book(book_name, author, description, user_name)
     else:
         print('You must have admin privileges to add a book.')
 
