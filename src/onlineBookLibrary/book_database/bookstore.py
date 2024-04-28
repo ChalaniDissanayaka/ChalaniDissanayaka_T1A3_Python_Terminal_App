@@ -1,4 +1,5 @@
 import json
+from src.onlineBookLibrary.rating_calculator import logic
 
 
 books_file = 'books.json'
@@ -27,10 +28,18 @@ def add_book(book_name, author, description, user_name):
     save_all_books(books)
 
 
-def mark_book_as_read(book_name, user_name):
+def mark_book_as_read(book_name, user_name, book_rating):
     books = get_all_books()
     for book in books:
         if book['book_name'] == book_name:
+            number_of_reads = book['number_of_read_times']
+            number_of_read_times = logic.calculate_number_of_read_times(number_of_reads)
+            book['number_of_read_times'] = number_of_read_times
+            total_rating = book['total_rating_score']
+            total_rating_score = logic.calculate_total_rating_score(total_rating, book_rating)
+            book['total_rating_score'] = total_rating_score
+            average_rating = logic.calculate_average_rating(total_rating_score, number_of_read_times)
+            book['average_rating'] = average_rating
             users = book['users']
             users.append({'user_name': user_name, 'user_role': 'reader', 'read': '1'})
     save_all_books(books)

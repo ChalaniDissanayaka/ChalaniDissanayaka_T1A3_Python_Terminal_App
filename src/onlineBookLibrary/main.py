@@ -47,14 +47,15 @@ def prompt_add_book():
 def list_books():
     book_list = bookstore.get_all_books()
     for book in book_list:
-        print(f"{book['book_name']} by {book['author']}")
+        print(f"{book['book_name']} by {book['author']} — Rating : {book['average_rating']}")
 
 
 def prompt_read_book():
     user_name = input('Enter your name: ')
     book_name = input('Enter the name of the book you just finished reading: ')
+    book_rating = float(input('Enter your rating ( 1 - 5 ): '))
 
-    bookstore.mark_book_as_read(book_name, user_name)
+    bookstore.mark_book_as_read(book_name, user_name, book_rating)
 
 
 def prompt_delete_book():

@@ -3,14 +3,34 @@
     "book_name": "The Name of the Wind",
     "author": "Patrick Rothfuss",
     "description": "The intimate narrative of his childhood in a troupe of traveling players, his years spent as a near-feral orphan in a crime-ridden city",
-    "average_rating": 0,
-    "total_rating_score": 0,
-    "number_of_read_times": 0,
+    "average_rating": 4.04,
+    "total_rating_score": 16.15,
+    "number_of_read_times": 4,
     "users": [
       {
         "user_name": "lily",
         "user_role": "admin",
         "read": false
+      },
+      {
+        "user_name": "chalani",
+        "user_role": "reader",
+        "read": "1"
+      },
+      {
+        "user_name": "sama",
+        "user_role": "reader",
+        "read": "1"
+      },
+      {
+        "user_name": "amara",
+        "user_role": "reader",
+        "read": "1"
+      },
+      {
+        "user_name": "kim",
+        "user_role": "reader",
+        "read": "1"
       }
     ]
   },
@@ -33,14 +53,24 @@
     "book_name": "The Narrow Road Between Desires",
     "author": "Patrick Rothfuss",
     "description": "The Narrow Road Between Desires is Bast's story. In it he traces the old ways of making and breaking",
-    "average_rating": 0,
-    "total_rating_score": 0,
-    "number_of_read_times": 0,
+    "average_rating": 4.12,
+    "total_rating_score": 8.25,
+    "number_of_read_times": 2,
     "users": [
       {
         "user_name": "suba",
         "user_role": "admin",
         "read": false
+      },
+      {
+        "user_name": "chalani",
+        "user_role": "reader",
+        "read": "1"
+      },
+      {
+        "user_name": "amara",
+        "user_role": "reader",
+        "read": "1"
       }
     ]
   },
