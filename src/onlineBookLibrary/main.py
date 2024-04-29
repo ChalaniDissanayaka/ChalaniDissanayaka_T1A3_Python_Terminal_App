@@ -4,8 +4,9 @@ from book_database import user
 USER_CHOICE = """
 Please Enter:
 - 'a' to add a new book
-- 's' to search a book by name or author
 - 'l' to list all books
+- 'sn' to search a book by name
+- 'sa' to search a book by author
 - 'r' to mark a book as read
 - 'd' to delete a book
 - 'q' to quit
@@ -20,6 +21,10 @@ def menu():
             prompt_add_book()
         elif user_input == 'l':
             list_books()
+        elif user_input == 'sn':
+            search_a_book_by_name()
+        elif user_input == 'sa':
+            search_a_book_by_author()
         elif user_input == 'r':
             prompt_read_book()
         elif user_input == 'd':
@@ -48,6 +53,30 @@ def list_books():
     book_list = bookstore.get_all_books()
     for book in book_list:
         print(f"{book['book_name']} by {book['author']} — Rating : {book['average_rating']}")
+
+
+def search_a_book_by_name():
+    book_name = input('Enter the book name: ')
+    book_list = bookstore.get_all_books()
+    is_found = False
+    for book in book_list:
+        if book['book_name'] == book_name:
+            print(f"{book['book_name']} by {book['author']} — Rating : {book['average_rating']}")
+            is_found = True
+    if not is_found:
+        print("The book is not in the library.")
+
+
+def search_a_book_by_author():
+    author = input('Enter the book author: ')
+    book_list = bookstore.get_all_books()
+    is_found = False
+    for book in book_list:
+        if book['author'] == author:
+            print(f"{book['book_name']} by {book['author']} — Rating : {book['average_rating']}")
+            is_found = True
+    if not is_found:
+        print(f"There is not any book written by {author} in the library.")
 
 
 def prompt_read_book():
