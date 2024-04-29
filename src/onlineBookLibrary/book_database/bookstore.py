@@ -22,10 +22,17 @@ def save_all_books(books):
 
 def add_book(book_name, author, description, user_name):
     books = get_all_books()
-    books.append({'book_name': book_name, 'author': author, 'description': description,
-                  'average_rating': 0, 'total_rating_score': 0, 'number_of_read_times': 0,
-                  'users': [{'user_name': user_name, 'user_role': 'admin', 'read': False}]})
-    save_all_books(books)
+    is_found = False
+    for book in books:
+        if book['book_name'] == book_name:
+            is_found = True
+    if not is_found:
+        books.append({'book_name': book_name, 'author': author, 'description': description,
+                      'average_rating': 0, 'total_rating_score': 0, 'number_of_read_times': 0,
+                      'users': [{'user_name': user_name, 'user_role': 'admin', 'read': False}]})
+        save_all_books(books)
+    else:
+        print(f"{book_name} is already exists in the library.")
 
 
 def mark_book_as_read(book_name, user_name, book_rating):
