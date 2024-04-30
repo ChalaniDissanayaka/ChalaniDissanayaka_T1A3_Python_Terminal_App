@@ -1,6 +1,7 @@
 from book_database import bookstore
 from book_database import user
 
+
 USER_CHOICE = """
 Please Enter:
 - 'a' to add a new book
@@ -52,7 +53,10 @@ def prompt_add_book():
 def list_books():
     book_list = bookstore.get_all_books()
     for book in book_list:
-        print(f"{book['book_name']} by {book['author']} — Rating : {book['average_rating']}")
+        if book['average_rating'] == 0 and book['number_of_read_times'] == 0:
+            print(f"{book['book_name']} by {book['author']} — Rating : Reader has not rated this book yet.")
+        else:
+            print(f"{book['book_name']} by {book['author']} — Rating : {book['average_rating']}")
 
 
 def search_a_book_by_name():

@@ -3,9 +3,9 @@
     "book_name": "The Name of the Wind",
     "author": "Patrick Rothfuss",
     "description": "The intimate narrative of his childhood in a troupe of traveling players, his years spent as a near-feral orphan in a crime-ridden city",
-    "average_rating": 4.04,
-    "total_rating_score": 16.15,
-    "number_of_read_times": 4,
+    "average_rating": 3.93,
+    "total_rating_score": 19.65,
+    "number_of_read_times": 5,
     "users": [
       {
         "user_name": "lily",
@@ -29,6 +29,11 @@
       },
       {
         "user_name": "kim",
+        "user_role": "reader",
+        "read": "1"
+      },
+      {
+        "user_name": "ganga",
         "user_role": "reader",
         "read": "1"
       }
