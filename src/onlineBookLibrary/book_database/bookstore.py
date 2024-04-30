@@ -31,6 +31,7 @@ def add_book(book_name, author, description, user_name):
                       'average_rating': 0, 'total_rating_score': 0, 'number_of_read_times': 0,
                       'users': [{'user_name': user_name, 'user_role': 'admin', 'read': False}]})
         save_all_books(books)
+        print("The book successfully added to the library.")
     else:
         print(f"{book_name} is already exists in the library.")
 
@@ -49,10 +50,19 @@ def mark_book_as_read(book_name, user_name, book_rating):
             book['average_rating'] = average_rating
             users = book['users']
             users.append({'user_name': user_name, 'user_role': 'reader', 'read': '1'})
+            print(f"{book['book_name']} by {book['author']} — Rating : {average_rating}")
     save_all_books(books)
 
 
 def delete_book(book_name):
     books = get_all_books()
-    books = [book for book in books if book['book_name'] != book_name]
-    save_all_books(books)
+    is_found = False
+    for book in books:
+        if book['book_name'] == book_name:
+            is_found = True
+    if is_found:
+        books = [book for book in books if book['book_name'] != book_name]
+        save_all_books(books)
+        print("The book successfully deleted from the library.")
+    else:
+        print(f"{book_name} is not exists in the library.")
