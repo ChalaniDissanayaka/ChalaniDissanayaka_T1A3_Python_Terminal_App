@@ -11,3 +11,10 @@ def calculate_total_rating_score(total_rating_score, book_rating):
 def calculate_number_of_read_times(number_of_read_times):
     number_of_read_times = number_of_read_times + 1
     return number_of_read_times
+
+
+def validate_rating_score(book_rating) -> bool:
+    if book_rating < 1 or book_rating > 5:
+        return False
+    else:
+        return True
