@@ -1,5 +1,6 @@
 from book_database import bookstore
 from book_database import user
+from rating_calculator import logic
 
 
 USER_CHOICE = """
@@ -87,8 +88,11 @@ def prompt_read_book():
     user_name = input('Enter your name: ')
     book_name = input('Enter the name of the book you just finished reading: ')
     book_rating = float(input('Enter your rating ( 1 - 5 ): '))
-
-    bookstore.mark_book_as_read(book_name, user_name, book_rating)
+    if logic.validate_rating_score(book_rating):
+        bookstore.mark_book_as_read(book_name, user_name, book_rating)
+    else:
+        print('Invalid rating score. Please Enter rating between 1 - 5 ')
+        prompt_read_book()
 
 
 def prompt_delete_book():

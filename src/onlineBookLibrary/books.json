@@ -98,9 +98,9 @@
     "book_name": "The Girl on the Train",
     "author": "Paula Hawkins",
     "description": "Rachel catches the same commuter train every morning. She knows it will wait at the same signal each time, overlooking a row of back gardens.",
-    "average_rating": 4.0,
-    "total_rating_score": 4.0,
-    "number_of_read_times": 1,
+    "average_rating": 4.17,
+    "total_rating_score": 8.35,
+    "number_of_read_times": 2,
     "users": [
       {
         "user_name": "lily",
@@ -109,6 +109,11 @@
       },
       {
         "user_name": "nami",
+        "user_role": "reader",
+        "read": "1"
+      },
+      {
+        "user_name": "waruni",
         "user_role": "reader",
         "read": "1"
       }
