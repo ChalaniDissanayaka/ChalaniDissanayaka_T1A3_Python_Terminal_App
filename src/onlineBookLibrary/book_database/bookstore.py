@@ -38,8 +38,10 @@ def add_book(book_name, author, description, user_name):
 
 def mark_book_as_read(book_name, user_name, book_rating):
     books = get_all_books()
+    is_found = False
     for book in books:
         if book['book_name'] == book_name:
+            is_found = True
             number_of_reads = book['number_of_read_times']
             number_of_read_times = logic.calculate_number_of_read_times(number_of_reads)
             book['number_of_read_times'] = number_of_read_times
@@ -52,6 +54,8 @@ def mark_book_as_read(book_name, user_name, book_rating):
             users.append({'user_name': user_name, 'user_role': 'reader', 'read': '1'})
             print(f"{book['book_name']} by {book['author']} — Rating : {average_rating}")
     save_all_books(books)
+    if not is_found:
+        print(f"{book_name} is not exists in the library.")
 
 
 def delete_book(book_name):

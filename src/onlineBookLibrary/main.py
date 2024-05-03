@@ -48,7 +48,7 @@ def prompt_add_book():
     if is_admin(user_name):
         bookstore.add_book(book_name, author, description, user_name)
     else:
-        print('You must have admin privileges to add a book.')
+        print("You must have admin privileges to add a book.")
 
 
 def list_books():
@@ -84,14 +84,23 @@ def search_a_book_by_author():
         print(f"There is not any book written by {author} in the library.")
 
 
+def prompt_book_rating():
+    while True:
+        try:
+            book_rating = float(input('Enter your rating ( 1 - 5 ): '))
+            return book_rating
+        except ValueError:
+            print("Invalid rating score. Please Enter rating between 1 - 5 ")
+
+
 def prompt_read_book():
     user_name = input('Enter your name: ')
     book_name = input('Enter the name of the book you just finished reading: ')
-    book_rating = float(input('Enter your rating ( 1 - 5 ): '))
+    book_rating = prompt_book_rating()
     if logic.validate_rating_score(book_rating):
         bookstore.mark_book_as_read(book_name, user_name, book_rating)
     else:
-        print('Invalid rating score. Please Enter rating between 1 - 5 ')
+        print("Invalid rating score. Please Enter rating between 1 - 5 ")
         prompt_read_book()
 
 
@@ -102,7 +111,7 @@ def prompt_delete_book():
     if is_admin(user_name):
         bookstore.delete_book(book_name)
     else:
-        print('You must have admin privileges to delete a book.')
+        print("You must have admin privileges to delete a book.")
 
 
 menu()
