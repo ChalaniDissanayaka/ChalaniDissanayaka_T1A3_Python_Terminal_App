@@ -1,6 +1,8 @@
 from book_database import bookstore
 from book_database import user
 from rating_calculator import logic
+from tabulate import tabulate
+from operator import itemgetter
 
 
 USER_CHOICE = """
@@ -53,11 +55,25 @@ def prompt_add_book():
 
 def list_books():
     book_list = bookstore.get_all_books()
+    primary_key = itemgetter("book_name")
+    book_list.sort(key=primary_key)
+    header = ['Book Name', 'Author', 'Rating']
+    book_data = []
+    book_data_values = []
+
     for book in book_list:
         if book['average_rating'] == 0 and book['number_of_read_times'] == 0:
-            print(f"{book['book_name']} by {book['author']} — Rating : Reader has not rated this book yet.")
+            book_data.append({'book_name': book['book_name'], 'author': book['author'],
+                              'average_rating': 'Reader has not rated this book yet.'})
         else:
-            print(f"{book['book_name']} by {book['author']} — Rating : {book['average_rating']}")
+            book_data.append({'book_name': book['book_name'], 'author': book['author'],
+                              'average_rating': book['average_rating']})
+
+    for data in book_data:
+        book_data_values.append(list(data.values()))
+
+    print(' ')
+    print(tabulate(book_data_values, headers=header, tablefmt='fancy_grid'))
 
 
 def search_a_book_by_name():
