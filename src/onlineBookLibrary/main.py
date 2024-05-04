@@ -3,19 +3,105 @@ from book_database import user
 from rating_calculator import logic
 from tabulate import tabulate
 from operator import itemgetter
+import sys
+import time
 
+
+# Rainbow colors (ANSI escape codes)
+colors = [
+    "\033[31m",   # Red
+    "\033[91m",   # Light Red
+    "\033[33m",   # Yellow
+    "\033[93m",   # Light Yellow
+    "\033[32m",   # Green
+    "\033[92m",   # Light Green
+    "\033[34m",   # Blue
+    "\033[94m",   # Light Blue
+    "\033[35m",   # Magenta
+    "\033[95m",   # Light Magenta
+    "\033[36m",   # Cyan
+    "\033[96m"    # Light Cyan
+]
+
+
+# ASCII art for "Chapters Haven"
+def create_ascii_logo():
+    ascii_art = """
+
+                    {y}          /$$$$$$ /$$                          /$$                             /$$   /$$                                    
+                    {g}         /$$__  $| $$                         | $$                            | $$  | $$                                    
+                    {m}        | $$  \__| $$$$$$$  /$$$$$$  /$$$$$$ /$$$$$$   /$$$$$$  /$$$$$$       | $$  | $$ /$$$$$$ /$$    /$$/$$$$$$ /$$$$$$$ 
+                    {b}        | $$     | $$__  $$|____  $$/$$__  $|_  $$_/  /$$__  $$/$$__  $$      | $$$$$$$$|____  $|  $$  /$$/$$__  $| $$__  $$
+                    {c}        | $$     | $$  \ $$ /$$$$$$| $$  \ $$ | $$   | $$$$$$$| $$  \__/      | $$__  $$ /$$$$$$$\  $$/$$| $$$$$$$| $$  \ $$
+                    {m}        | $$    $| $$  | $$/$$__  $| $$  | $$ | $$ /$| $$_____| $$            | $$  | $$/$$__  $$ \  $$$/| $$_____| $$  | $$
+                    {y}        |  $$$$$$| $$  | $|  $$$$$$| $$$$$$$/ |  $$$$|  $$$$$$| $$            | $$  | $|  $$$$$$$  \  $/ |  $$$$$$| $$  | $$
+                    {r}         \______/|__/  |__/\_______| $$____/   \___/  \_______|__/            |__/  |__/\_______/   \_/   \_______|__/  |__/
+                    {g}                                   | $$                                                                                     
+                    {m}                                   | $$                                                                                     
+                    {c}                                   |__/                                                                                                                                                                                  
+
+    """
+
+    # Text to display
+    text = "Chapters Haven"
+
+    # Display ASCII art with colored text
+    for i, char in enumerate(text):
+        color = colors[i % len(colors)]  # Cycle through colors
+        sys.stdout.write(color + char)
+    sys.stdout.write("\033[0m\n")  # Reset color
+    print(ascii_art.format(r=colors[0], g=colors[4], y=colors[2], b=colors[6], c=colors[10], m=colors[8]))
+
+    # Text to display
+    text2 = "WELCOME TO CHAPTER HAVEN"
+
+    # Display rainbow-colored text
+    for i, char in enumerate(text2):
+        color = colors[i % len(colors)]  # Cycle through colors
+        sys.stdout.write(color + char)
+        sys.stdout.flush()
+        time.sleep(0.1)  # Delay between characters
+    sys.stdout.write("\033[0m\n")  # Reset color and move cursor to next line
+
+
+def list_books():
+    book_list = bookstore.get_all_books()
+    primary_key = itemgetter("book_name")
+    book_list.sort(key=primary_key)
+    header = ['Book Name', 'Author', 'Rating']
+    book_data = []
+    book_data_values = []
+
+    for book in book_list:
+        if book['average_rating'] == 0 and book['number_of_read_times'] == 0:
+            book_data.append({'book_name': book['book_name'], 'author': book['author'],
+                              'average_rating': 'Reader has not rated this book yet.'})
+        else:
+            book_data.append({'book_name': book['book_name'], 'author': book['author'],
+                              'average_rating': book['average_rating']})
+
+    for data in book_data:
+        book_data_values.append(list(data.values()))
+
+    print(' ')
+    print(tabulate(book_data_values, headers=header, tablefmt='fancy_grid'))
+
+
+create_ascii_logo()
+list_books()
 
 USER_CHOICE = """
 Please Enter:
-- 'a' to add a new book
-- 'l' to list all books
-- 'sn' to search a book by name
-- 'sa' to search a book by author
-- 'r' to mark a book as read
-- 'd' to delete a book
-- 'q' to quit
+\033[1;32;40m- 'a' to add a new book\033[1;37;40m
+\033[1;33;40m- 'l' to list all books\033[1;37;40m
+\033[1;34;40m- 'sn' to search a book by name\033[1;37;40m
+\033[1;35;40m- 'sa' to search a book by author\033[1;37;40m
+\033[1;36;40m- 'r' to mark a book as read\033[1;37;40m
+\033[1;31;40m- 'd' to delete a book\033[1;37;40m
+\033[1;37;40m- 'q' to quit\033[1;37;40m
 
-Please Enter Your Choice: """
+\033[1;36;40mPlease Enter Your Choice:\033[1;37;40m
+"""
 
 
 def menu():
@@ -53,37 +139,17 @@ def prompt_add_book():
         print("You must have admin privileges to add a book.")
 
 
-def list_books():
-    book_list = bookstore.get_all_books()
-    primary_key = itemgetter("book_name")
-    book_list.sort(key=primary_key)
-    header = ['Book Name', 'Author', 'Rating']
-    book_data = []
-    book_data_values = []
-
-    for book in book_list:
-        if book['average_rating'] == 0 and book['number_of_read_times'] == 0:
-            book_data.append({'book_name': book['book_name'], 'author': book['author'],
-                              'average_rating': 'Reader has not rated this book yet.'})
-        else:
-            book_data.append({'book_name': book['book_name'], 'author': book['author'],
-                              'average_rating': book['average_rating']})
-
-    for data in book_data:
-        book_data_values.append(list(data.values()))
-
-    print(' ')
-    print(tabulate(book_data_values, headers=header, tablefmt='fancy_grid'))
-
-
 def search_a_book_by_name():
     book_name = input('Enter the book name: ')
     book_list = bookstore.get_all_books()
     is_found = False
     for book in book_list:
         if book['book_name'] == book_name:
-            print(f"{book['book_name']} by {book['author']} — Rating : {book['average_rating']}")
             is_found = True
+            if book['average_rating'] == 0 and book['number_of_read_times'] == 0:
+                print(f"{book['book_name']} by {book['author']} — Rating : Reader has not rated this book yet.")
+            else:
+                print(f"{book['book_name']} by {book['author']} — Rating : {book['average_rating']}")
     if not is_found:
         print("The book is not in the library.")
 
@@ -126,15 +192,29 @@ def prompt_book_rating():
             print("Invalid rating score. Please Enter rating between 1 - 5 ")
 
 
+def prompt_book_rating_when_invalid():
+    while True:
+        try:
+            book_rating = float(input('Invalid rating score. Please Enter rating between 1 - 5 '))
+            return book_rating
+        except ValueError:
+            print("Invalid rating score. Please Enter rating between 1 - 5 ")
+
+
 def prompt_read_book():
     user_name = input('Enter your name: ')
     book_name = input('Enter the name of the book you just finished reading: ')
     book_rating = prompt_book_rating()
-    if logic.validate_rating_score(book_rating):
+    is_valid_rating = logic.validate_rating_score(book_rating)
+
+    if is_valid_rating:
         bookstore.mark_book_as_read(book_name, user_name, book_rating)
     else:
-        print("Invalid rating score. Please Enter rating between 1 - 5 ")
-        prompt_read_book()
+        book_rating = prompt_book_rating_when_invalid()
+        while not logic.validate_rating_score(book_rating):
+            prompt_book_rating_when_invalid()
+            book_rating = prompt_book_rating_when_invalid()
+        bookstore.mark_book_as_read(book_name, user_name, book_rating)
 
 
 def prompt_delete_book():
