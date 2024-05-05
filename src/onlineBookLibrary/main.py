@@ -24,9 +24,9 @@ colors = [
 ]
 
 
-# ASCII art for "Chapters Haven"
+# ASCII art for "Chapter Haven"
 def create_ascii_logo():
-    ascii_art = """
+    ascii_art = r"""
 
                     {y}          /$$$$$$ /$$                          /$$                             /$$   /$$                                    
                     {g}         /$$__  $| $$                         | $$                            | $$  | $$                                    
@@ -42,21 +42,13 @@ def create_ascii_logo():
 
     """
 
-    # Text to display
-    text = "Chapters Haven"
-
-    # Display ASCII art with colored text
-    for i, char in enumerate(text):
-        color = colors[i % len(colors)]  # Cycle through colors
-        sys.stdout.write(color + char)
-    sys.stdout.write("\033[0m\n")  # Reset color
     print(ascii_art.format(r=colors[0], g=colors[4], y=colors[2], b=colors[6], c=colors[10], m=colors[8]))
 
     # Text to display
-    text2 = "WELCOME TO CHAPTER HAVEN"
+    text = "WELCOME TO CHAPTER HAVEN ONLINE BOOK LIBRARY"
 
     # Display rainbow-colored text
-    for i, char in enumerate(text2):
+    for i, char in enumerate(text):
         color = colors[i % len(colors)]  # Cycle through colors
         sys.stdout.write(color + char)
         sys.stdout.flush()
@@ -100,8 +92,7 @@ Please Enter:
 \033[1;31;40m- 'd' to delete a book\033[1;37;40m
 \033[1;37;40m- 'q' to quit\033[1;37;40m
 
-\033[1;36;40mPlease Enter Your Choice:\033[1;37;40m
-"""
+\033[1;36;40mPlease Enter Your Choice:\033[1;37;40m """
 
 
 def menu():
@@ -135,6 +126,7 @@ def prompt_add_book():
 
     if is_admin(user_name):
         bookstore.add_book(book_name, author, description, user_name)
+        list_books()
     else:
         print("You must have admin privileges to add a book.")
 
@@ -223,6 +215,7 @@ def prompt_delete_book():
 
     if is_admin(user_name):
         bookstore.delete_book(book_name)
+        list_books()
     else:
         print("You must have admin privileges to delete a book.")
 
