@@ -42,7 +42,7 @@ def mark_book_as_read(book_name, user_name, book_rating):
     books = get_all_books()
     is_found = False
     for book in books:
-        if book['book_name'] == book_name:
+        if book['book_name'].strip().lower() == book_name.strip().lower():
             is_found = True
             number_of_reads = book['number_of_read_times']
             number_of_read_times = calculate_number_of_read_times(number_of_reads)
@@ -64,10 +64,10 @@ def delete_book(book_name):
     books = get_all_books()
     is_found = False
     for book in books:
-        if book['book_name'] == book_name:
+        if book['book_name'].strip().lower() == book_name.strip().lower():
             is_found = True
     if is_found:
-        books = [book for book in books if book['book_name'] != book_name]
+        books = [book for book in books if book['book_name'].strip().lower() != book_name.strip().lower()]
         save_all_books(books)
         print("The book successfully deleted from the library.")
     else:

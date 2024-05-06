@@ -136,7 +136,7 @@ def search_a_book_by_name():
     book_list = bookstore.get_all_books()
     is_found = False
     for book in book_list:
-        if book['book_name'] == book_name:
+        if book['book_name'].strip().lower() == book_name.strip().lower():
             is_found = True
             if book['average_rating'] == 0 and book['number_of_read_times'] == 0:
                 print(f"{book['book_name']} by {book['author']} — Rating : Reader has not rated this book yet.")
@@ -156,7 +156,7 @@ def search_a_book_by_author():
     book_data_values = []
     is_found = False
     for book in book_list:
-        if book['author'] == author:
+        if book['author'].strip().lower() == author.strip().lower():
             is_found = True
             if book['average_rating'] == 0 and book['number_of_read_times'] == 0:
                 book_data.append({'book_name': book['book_name'], 'author': book['author'],
